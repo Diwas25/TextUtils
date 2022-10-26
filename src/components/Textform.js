@@ -14,6 +14,35 @@ export default function Textform(props) {
       setText(newText);
   };
 
+
+  const handleClearClick = () => {
+    // console.log("Uppercase was clicked");
+    let newText = ' ';
+    setText(newText);
+};
+
+const handleReadClick = () => {
+  // console.log("Uppercase was clicked");
+  let msg = new SpeechSynthesisUtterance();
+  msg.text = text;
+  window.speechSynthesis.speak(msg);
+};
+
+const CapFClick = () => {
+  let CapitalizeWords = text[0].toUpperCase();
+  for (let i = 1; i <= text.length - 1; i++) {
+      let currentCharacter, previousCharacter = text[i - 1];
+      if (previousCharacter && previousCharacter === ' ') {
+          currentCharacter = text[i].toUpperCase();
+      } else {
+          currentCharacter = text[i];
+      }
+      CapitalizeWords = CapitalizeWords + currentCharacter;
+  }
+  setText(CapitalizeWords);
+}
+  
+
     const handleOnChange = (event) => {
         // console.log("On Change");
         setText(event.target.value);
@@ -34,6 +63,10 @@ export default function Textform(props) {
       </div>
       <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert to LowerCase</button>
+      <button className="btn btn-primary mx-2" onClick={CapFClick}>Capitalize</button>
+      <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
+      <button className="btn btn-primary mx-2" onClick={handleReadClick}>Read Text</button>
+      
     </div>
     <div class="container my-3">
       <h2>Your Text Summary</h2>
