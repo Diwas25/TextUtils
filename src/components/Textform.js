@@ -29,18 +29,28 @@ const handleReadClick = () => {
 };
 
 const CapFClick = () => {
-  let CapitalizeWords = text[0].toUpperCase();
-  for (let i = 1; i <= text.length - 1; i++) {
-      let currentCharacter, previousCharacter = text[i - 1];
-      if (previousCharacter && previousCharacter === ' ') {
-          currentCharacter = text[i].toUpperCase();
-      } else {
-          currentCharacter = text[i];
+      let CapitalizeWords = text[0].toUpperCase();
+      for (let i = 1; i <= text.length - 1; i++) {
+          let currentCharacter, previousCharacter = text[i - 1];
+          if (previousCharacter && previousCharacter === ' ') {
+              currentCharacter = text[i].toUpperCase();
+          } else {
+              currentCharacter = text[i];
+          }
+          CapitalizeWords = CapitalizeWords + currentCharacter;
       }
-      CapitalizeWords = CapitalizeWords + currentCharacter;
-  }
-  setText(CapitalizeWords);
-}
+      setText(CapitalizeWords);
+    }
+    const handleCopy = () => {
+      var text = document.getElementById("myBox");
+      text.select();
+      navigator.clipboard.writeText(text.value);
+    }
+    const handleExtraSpaces = () => {
+      let newText = text.split(/[ ]+/);
+      setText(newText.join(" "));
+    }
+
   
 
     const handleOnChange = (event) => {
@@ -55,7 +65,7 @@ const CapFClick = () => {
         <textarea
           className="form-control"
           value={text}
-          id="exampleFormControlTextarea1"
+          id="myBox"
           rows="10"
           onChange={handleOnChange}
         ></textarea>
@@ -66,6 +76,8 @@ const CapFClick = () => {
       <button className="btn btn-primary mx-2" onClick={CapFClick}>Capitalize</button>
       <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
       <button className="btn btn-primary mx-2" onClick={handleReadClick}>Read Text</button>
+      <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
+      <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
       
     </div>
     <div class="container my-3">
