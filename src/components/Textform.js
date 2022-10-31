@@ -59,7 +59,7 @@ const CapFClick = () => {
     };
   return (
     <>
-    <div class="container">
+    <div className="container" style={{color: props.mode === 'light'?'black':'white'}}>
       <h2>{props.heading}</h2>  
       <div className="mb-3">
         <textarea
@@ -68,6 +68,7 @@ const CapFClick = () => {
           id="myBox"
           rows="10"
           onChange={handleOnChange}
+          style={{backgroundColor: props.mode === 'light'?'white':'grey',color: props.mode === 'light'?'black':'white'}}
         ></textarea>
        
       </div>
@@ -80,12 +81,12 @@ const CapFClick = () => {
       <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
       
     </div>
-    <div class="container my-3">
+    <div className="container my-3" style={{color: props.mode === 'light'?'black':'white'}}>
       <h2>Your Text Summary</h2>
       <p>{text.split(" ").length} words and {text.length} characters</p>
       <p>{0.008 * text.split(" ").length} Minute Read</p>
       <h2>Preview</h2>
-      {text}
+      {text.length>0 ? text:"Enter Your Text to Preview it here"}
     </div>
     </>
   );
