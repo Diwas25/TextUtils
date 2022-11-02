@@ -6,12 +6,14 @@ export default function Textform(props) {
         // console.log("Uppercase was clicked");
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to Uppercase","success");
     };
 
     const handleLoClick = () => {
       // console.log("Uppercase was clicked");
       let newText = text.toLowerCase();
       setText(newText);
+      props.showAlert("Converted to Lowercase","success");
   };
 
 
@@ -39,6 +41,7 @@ const CapFClick = () => {
           }
           CapitalizeWords = CapitalizeWords + currentCharacter;
       }
+      props.showAlert("Text Capitalized","success");
       setText(CapitalizeWords);
     }
     const handleCopy = () => {
