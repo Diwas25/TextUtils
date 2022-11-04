@@ -21,6 +21,7 @@ export default function Textform(props) {
     // console.log("Uppercase was clicked");
     let newText = ' ';
     setText(newText);
+    props.showAlert("Text Cleared","success");
 };
 
 const handleReadClick = () => {
@@ -48,10 +49,12 @@ const CapFClick = () => {
       var text = document.getElementById("myBox");
       text.select();
       navigator.clipboard.writeText(text.value);
+      props.showAlert("Copied to clipboard","success");
     }
     const handleExtraSpaces = () => {
       let newText = text.split(/[ ]+/);
       setText(newText.join(" "));
+      props.showAlert("Extra space removed","success");
     }
 
   

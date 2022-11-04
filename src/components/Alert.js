@@ -11,9 +11,7 @@ function Alert(props) {
         <strong>{capitalized(props.alert.type)}</strong>
         {/* <strong>{props.alert.type}</strong> */}
         : {props.alert.msg}
-        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            {/* <span aria-hidden="true">&times;</span> */}
-        </button>
+        
         </div>
 
   )
